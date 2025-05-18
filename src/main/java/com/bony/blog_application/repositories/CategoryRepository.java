@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface CategoryRepository extends JpaRepository<Category, UUID> {
     @Query("SELECT c, COUNT(p) FROM Category c LEFT JOIN c.posts p GROUP BY c")
     List<Category> findAllWithPostCount();
+
+    boolean existsByNameIgnoreCase(String name);
 }
